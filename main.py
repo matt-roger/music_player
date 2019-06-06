@@ -4,29 +4,9 @@ from urllib.request import urlopen
 import speech_recognition as sr
 import os
 import time
+import WizSpeak
 
 browser = webdriver.Chrome("chromedriver")
-
-def listen():
-	try:
-		r = sr.Recognizer()
-		mic = sr.Microphone()
-
-		print('Listening..........')
-		with mic as source:
-			r.adjust_for_ambient_noise(source)
-			audio = r.listen(source)
-		print('Understood')
-		query = r.recognize_google(audio)
-
-		print(query)
-		return query
-	except:
-
-		print("I dont understand.....")
-		time.sleep(.7)
-		os.system('cls')
-		return ""
 
 def startup():
 	state = listen().upper()
