@@ -29,7 +29,7 @@ def main():
 
 	choiceArr = choice.split()
 
-	#fuck
+	#todo
 	
 
 	while choice == "":
