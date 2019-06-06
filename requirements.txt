@@ -1,3 +1,4 @@
-lxml
-bs4
-selenium
+lxml 4.3.3
+bs4 0.0.1
+selenium 3.141.0
+python 3.6
