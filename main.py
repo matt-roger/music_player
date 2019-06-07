@@ -18,6 +18,7 @@ def startup():
 	main()
 
 def main():
+	#fuck me
 	global browser
 	# new, top, or mix url
 	track_url = "https://soundcloud.com/search/sounds?q="
