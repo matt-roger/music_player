@@ -1,3 +1,8 @@
+import time
+import os
+import speech_recognition as sr
+import gtts
+
 def listen():
 	try:
 		r = sr.Recognizer()
