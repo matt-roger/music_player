@@ -1,10 +1,8 @@
 from selenium import webdriver
 import bs4 
 from urllib.request import urlopen
-import speech_recognition as sr
 import os
-import time
-import WizSpeak
+from WizSpeak import listen, say
 
 browser = webdriver.Chrome("chromedriver")
 
