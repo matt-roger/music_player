@@ -1,10 +1,8 @@
 from selenium import webdriver
 import bs4 
 from urllib.request import urlopen
-import speech_recognition as sr
 import os
-import time
-import WizSpeak
+from WizSpeak import listen, say
 
 browser = webdriver.Chrome("chromedriver")
 
@@ -35,9 +33,10 @@ def main():
 	while choice == "":
 		choice = str(listen())
 		
-	choiceArr = choice.split().upper()
+	choiceArr = choice.split()
 	
 	for keyWord in choiceArr:
+		keyWord = keyWord.upper()
 		if keyWord == 'PLAYLIST':
 			for keyWord in choiceArr:
 				if keyWord == 'JOJI':
