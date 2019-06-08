@@ -6,6 +6,18 @@ from WizSpeak import listen, say
 
 browser = webdriver.Chrome("chromedriver")
 
+def foreach(arr, str):
+	str = str.upper()
+	returnVal = False
+	
+	for keyWord in arr:
+		keyWord = keyWord.upper()
+		if keyWord == str:
+			returnVal = True
+		else: #.....
+	
+	return returnVal
+
 def startup():
 	state = listen().upper()
 
@@ -16,7 +28,6 @@ def startup():
 	main()
 
 def main():
-	#fuck me
 	global browser
 	# new, top, or mix url
 	track_url = "https://soundcloud.com/search/sounds?q="
@@ -35,35 +46,31 @@ def main():
 		
 	choiceArr = choice.split()
 	
-	for keyWord in choiceArr:
-		keyWord = keyWord.upper()
-		if keyWord == 'PLAYLIST':
-			for keyWord in choiceArr:
-				if keyWord == 'JOJI':
-					browser.get(joji_url)
-				elif keyWord == 'CITY':
-					browser.get(cityPop_url)
-		else:
-			
+	if foreach(choiceArr, 'playlist'):
+		if foreach(choiceArr, 'joji'):
+			browser.get(joji_url)
+		elif foreach(choiceArr, 'city'):
+			browser.get(cityPop_url)
 
-			choice = "%20".join(choice.split())
-			print(choice)
+	else:
+		choice = "%20".join(choice.split())
+		print(choice)
 
-			resp = urlopen(track_url + choice)
-			if resp.getcode() == 200:
-				soup = bs4.BeautifulSoup(resp.read(), "html")
+		resp = urlopen(track_url + choice)
+		if resp.getcode() == 200:
+			soup = bs4.BeautifulSoup(resp.read(), "html")
 
-				print('--------------------------------------------------')
-				print('---------------------------------------------------')
+			print('--------------------------------------------------')
+			print('---------------------------------------------------')
 
-				songs = soup.select("a[href]")[2:]
-				print(songs)
-				songLinks =[]
+			songs = soup.select("a[href]")[2:]
+			print(songs)
+			songLinks =[]
 
-				for index, song in enumerate(songs):
-					songLinks.append(song.get("href"))
+			for index, song in enumerate(songs):
+				songLinks.append(song.get("href"))
 
-				browser.get('https://soundcloud.com' + songLinks[4])
+			browser.get('https://soundcloud.com' + songLinks[4])
 
 	startup()
 
